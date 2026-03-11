@@ -1,2 +1,3 @@
 # lognalyst
-Multi-threaded .LOG file analyzer
+
+`lognalyst` is a LOG file analyzer with multithreading logic.
