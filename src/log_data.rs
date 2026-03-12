@@ -20,28 +20,28 @@ impl LogLevel {
     /// let wrong_level = LogLevel::from_str("invalid");
     /// dgb!(wrong_level)  // None
     /// ```
-    fn from_str(s: &str) -> Option<Self> {
+    pub fn from_str(s: &str) -> Option<Self> {
         match s.to_uppercase().as_str() {
             "INFO" => Some(LogLevel::INFO),
             "ERROR" => Some(LogLevel::ERROR),
             "WARN" => Some(LogLevel::WARN),
             "DEBUG" => Some(LogLevel::DEBUG),
-            _ => None
+            _ => None,
         }
     }
 }
 
 #[derive(Debug, Clone)]
-pub struct Timestamp<'a> {
+pub struct LogTimestamp<'a> {
     pub date: &'a str,
     pub time: &'a str,
 }
 
 #[derive(Debug, Clone)]
 pub struct LogEntry<'a> {
-    pub timestamp: Timestamp<'a>,
+    pub timestamp: LogTimestamp<'a>,
     pub level: LogLevel,
-    pub message: &'a str,
+    pub message: String,
 }
 
 #[cfg(test)]
