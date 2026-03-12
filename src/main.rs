@@ -1,8 +1,9 @@
 mod input;
+mod log_data;
 
-use std::{env, process, fs};
-use std::error::Error;
 use input::Config;
+use std::error::Error;
+use std::{env, fs, process};
 
 fn read_file(file_path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(file_path)?;

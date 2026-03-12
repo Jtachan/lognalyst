@@ -6,15 +6,15 @@ pub struct Config {
     pub file_path: String,
 }
 
-impl crate::Config {
+impl Config {
     /// Function to build the configuration out of the CLI arguments.
-    pub fn build(mut args: impl Iterator<Item = String>) -> Result<crate::Config, &'static str> {
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
         //Remove the first argument, as it corresponds to the path of the executable.
         args.next();
         let file_path = match args.next() {
             Some(arg) => arg,
             None => return Err("Missing parameter: file_path."),
         };
-        Ok(crate::Config { file_path })
+        Ok(Config { file_path })
     }
 }
