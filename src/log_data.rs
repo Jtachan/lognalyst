@@ -33,6 +33,7 @@ impl LogLevel {
 
 #[derive(Debug, Clone)]
 pub struct LogTimestamp<'a> {
+    // todo: check the crate 'chrono'
     pub date: &'a str,
     pub time: &'a str,
 }

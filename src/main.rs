@@ -16,9 +16,8 @@ fn read_file(file_path: &str) -> Result<(), Box<dyn Error>> {
         }
     }
     for entry in entries {
-        dbg!(entry);
+        println!("{entry:?}");
     }
-
     Ok(())
 }
 
