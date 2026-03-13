@@ -1,0 +1,4 @@
+2024-03-12 14:23:45 INFO Server started on port 8080
+2024-03-12 14:23:46 ERROR Failed to connect to database
+2024-03-12 14:23:47 WARN Parsed parameters are ambiguous
+2024-03-12 14:23:48 DEBUG Hello World!
