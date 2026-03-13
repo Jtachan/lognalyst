@@ -56,7 +56,10 @@ impl LogEntry<'_> {
 
         println!("-----------\nLog Entry\n-----------");
         println!("[Level]   : {level_name}");
-        println!("[Time]    : {} {}", &self.timestamp.date, &self.timestamp.time);
+        println!(
+            "[Time]    : {} {}",
+            &self.timestamp.date, &self.timestamp.time
+        );
         println!("[Message] : {}\n", &self.message)
     }
 }

@@ -17,7 +17,7 @@ impl LogStatistics {
             error_count: 0,
             warn_count: 0,
             info_count: 0,
-            debug_count: 0
+            debug_count: 0,
         }
     }
     /// Updates the count based on an entry's level.
