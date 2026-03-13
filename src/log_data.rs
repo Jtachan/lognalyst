@@ -45,6 +45,22 @@ pub struct LogEntry<'a> {
     pub message: String,
 }
 
+impl LogEntry<'_> {
+    pub fn display(&self) {
+        let level_name = match &self.level {
+            LogLevel::INFO => "INFO",
+            LogLevel::ERROR => "ERROR",
+            LogLevel::WARN => "WARN",
+            LogLevel::DEBUG => "DEBUG",
+        };
+
+        println!("-----------\nLog Entry\n-----------");
+        println!("[Level]   : {level_name}");
+        println!("[Time]    : {} {}", &self.timestamp.date, &self.timestamp.time);
+        println!("[Message] : {}\n", &self.message)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -12,11 +12,11 @@ fn read_file(file_path: &str) -> Result<(), Box<dyn Error>> {
 
     for line in contents.lines() {
         if let Some(log_entry) = parse_line(line) {
-            entries.push(log_entry)
+            entries.push(log_entry);
         }
     }
     for entry in entries {
-        println!("{entry:?}");
+        entry.display();
     }
     Ok(())
 }
