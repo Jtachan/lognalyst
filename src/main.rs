@@ -4,21 +4,22 @@ mod statistics;
 
 use input::Config;
 use log_data::*;
+use statistics::LogStatistics;
 use std::error::Error;
 use std::{env, fs, process};
 
 fn read_file(file_path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(file_path)?;
-    let mut entries: Vec<LogEntry> = Vec::new();
+    let mut stats= LogStatistics::new();
 
     for line in contents.lines() {
         if let Some(log_entry) = parse_line(line) {
-            entries.push(log_entry);
+            log_entry.display();
+            stats.add_entry(&log_entry);
         }
     }
-    for entry in entries {
-        entry.display();
-    }
+
+    stats.display();
     Ok(())
 }
 
