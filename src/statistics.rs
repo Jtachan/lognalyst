@@ -42,7 +42,7 @@ impl LogStatistics {
             LogLevel::Critical => 4,
         });
         for (level, count) in sorted_counts {
-            println!("   {}: {}", level, count);
+            println!("   {:8} --> {}", level.to_string(), count);
         }
     }
 }
