@@ -1,5 +1,7 @@
 //! Information directly related with LOG files and their contents.
 
+use std::fmt::{Display, Formatter, Result};
+
 /// Enumeration for all the valid log levels that can be contained within a log file.
 #[derive(Debug, Clone, PartialEq)]
 pub enum LogLevel {
@@ -8,6 +10,18 @@ pub enum LogLevel {
     Warning,
     Error,
     Critical,
+}
+
+impl Display for LogLevel {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        match self {
+            LogLevel::Debug => write!(f, "DEBUG"),
+            LogLevel::Info => write!(f, "INFO"),
+            LogLevel::Warning => write!(f, "WARNING"),
+            LogLevel::Error => write!(f, "ERROR"),
+            LogLevel::Critical => write!(f, "CRITICAL"),
+        }
+    }
 }
 
 impl LogLevel {
@@ -50,16 +64,8 @@ pub struct LogEntry<'a> {
 
 impl LogEntry<'_> {
     pub fn display(&self) {
-        let level_name = match &self.level {
-            LogLevel::Debug => "DEBUG",
-            LogLevel::Info => "INFO",
-            LogLevel::Warning => "WARNING",
-            LogLevel::Error => "ERROR",
-            LogLevel::Critical => "CRITICAL",
-        };
-
         println!("-----------\nLog Entry\n-----------");
-        println!("[Level]   : {level_name}");
+        println!("[Level]   : {}", &self.level);
         println!(
             "[Time]    : {} {}",
             &self.timestamp.date, &self.timestamp.time
