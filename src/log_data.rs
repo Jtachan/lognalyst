@@ -3,7 +3,7 @@
 use std::fmt::{Display, Formatter, Result};
 
 /// Enumeration for all the valid log levels that can be contained within a log file.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Hash)]
 pub enum LogLevel {
     Debug,
     Info,
