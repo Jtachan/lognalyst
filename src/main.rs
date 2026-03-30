@@ -7,6 +7,18 @@ use log_data::*;
 use statistics::LogStatistics;
 use std::error::Error;
 use std::{env, fs, process};
+use std::path::PathBuf;
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[command(name="Lognalyst", version="0.1")]
+#[command(about="Log file analyzer")]
+struct Args {
+    input_file: PathBuf,
+
+    // #[arg(short, long)]
+    // filter: Option<LogLevel>,
+}
 
 fn read_file(file_path: &str) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(file_path)?;
@@ -44,12 +56,13 @@ fn parse_line(line: &'_ str) -> Option<LogEntry<'_>> {
 }
 
 fn main() {
-    let config = Config::build(env::args()).unwrap_or_else(|err| {
-        eprintln!("Problem parsing arguments -> {err}");
-        process::exit(1);
-    });
-    if let Err(e) = read_file(&config.file_path) {
-        eprintln!("[Error] -- {e}");
-        process::exit(1);
-    }
+    // let config = Config::build(env::args()).unwrap_or_else(|err| {
+    //     eprintln!("Problem parsing arguments -> {err}");
+    //     process::exit(1);
+    // });
+    // if let Err(e) = read_file(&config.file_path) {
+    //     eprintln!("[Error] -- {e}");
+    //     process::exit(1);
+    // }
+    let cli_args = Args::parse();
 }
